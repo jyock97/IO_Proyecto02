@@ -11,16 +11,13 @@ m = 0
 
 def draw(timeDp, timeBf, outputFile):
     method = ("Dinamica", "Fuerza Bruta")
-    posicion_x = np.arange(1)
-    unidades = (timeDp, timeBf)
-    plt.bar(posicion_x+0, [timeDp], color = "b", width = 0.25)
-    plt.bar(posicion_x+0.75, [timeBf], color = "g", width = 0.25)
-    plt.xticks(posicion_x+0, ["Dinamica","Fuerza Bruta"])
-
+    posicion_x = np.arange(2)
+    plt.bar(posicion_x, [timeDp,timeBf], color = "b")
     plt.ylabel('Tiempo en Segundos')
+    plt.xticks(posicion_x+0.4,['Dinamica',' Fuerza Bruta'])
     plt.title("Comparacion de metodos")
     plt.savefig(outputFile)
-
+    
 def solve(i, j, bDinamica):
     global mat, res, n, m
 
