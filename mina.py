@@ -72,7 +72,22 @@ def main():
         maxNum = max(maxNum, solve(i, 0, True))
     endTime = time.time()
     timeDp = endTime - startTime
-    print("Tiempo en resolver con Programacion Dinamica: " + str(timeDp))
+    meanTimeDp = timeDp
+
+    for x in range(0,10):
+        for i in range(0, len(res)):
+            for j in range(0, len(res[i])):
+                res[i][j] = 0
+
+        startTime = time.time()
+        for i in range(0, n):
+            maxNum = max(maxNum, solve(i, 0, True))
+        endTime = time.time()
+        timeDp = endTime - startTime
+        meanTimeDp = (meanTimeDp/2) + (timeDp/2)
+
+
+    print("Tiempo en resolver con Programacion Dinamica: " + str(meanTimeDp))
 
     #Limpiar la matriz de resultado para utilizarla de nuevo
     for i in range(0, len(res)):
@@ -85,7 +100,20 @@ def main():
         maxNum = max(maxNum, solve(i, 0, False))
     endTime = time.time()
     timeBf = endTime - startTime
-    print("Tiempo en resolver con Fuerza Bruta: " + str(timeBf))
+    meanTimeBf = timeBf
+
+    for x in range(0,10):
+        for i in range(0, len(res)):
+            for j in range(0, len(res[i])):
+                res[i][j] = 0
+        startTime = time.time()
+        for i in range(0, n):
+            maxNum = max(maxNum, solve(i, 0, False))
+        endTime = time.time()
+        timeBf = endTime - startTime
+        meanTimeBf = (meanTimeBf/2) + (timeBf/2)
+
+    print("Tiempo en resolver con Fuerza Bruta: " + str(meanTimeBf))
 
     draw(timeDp, timeBf, outputFile)
     print("Resultado: " + str(maxNum))
